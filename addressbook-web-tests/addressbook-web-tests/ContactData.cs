@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebAddressbookTests
 {
-    class ContactData
+    public class ContactData
     {
         private string firstname;        
         private string lastname;
@@ -323,7 +323,7 @@ namespace WebAddressbookTests
             }
             set
             {
-                notes = value;
+                phone2 = value;
             }
         }
     }

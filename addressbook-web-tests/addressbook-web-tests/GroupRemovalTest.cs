@@ -10,18 +10,18 @@ using OpenQA.Selenium.Support.UI;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class ContactCreationTests : TestBase
+    public class GroupRemovalTests : TestBase
     {
+        
         [Test]
-        public void ContactCreationTest()
+        public void RemovalGroupTest()
         {
             OpenHomePage();
             Login(new AccountData("admin", "secret"));
-            InitNewContactCreation();
-            ContactData contact = new ContactData("Firstname2", "Lastname2");
-            FillContactForm(contact);
-            SubmitContactCreation();
-            Logout();
+            GoToGroupsPage();
+            SelectGroup(1);
+            RemoveGroup();
+            ReturnToGroupsPage();
         }
     }
 }
