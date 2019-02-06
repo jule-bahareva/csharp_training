@@ -23,8 +23,29 @@ namespace WebAddressbookTests
             return this;
         }
 
+        public ContactHelper Remove(int v)
+        {
+    
+            SelectContact(1);
+            InitContactModification();
+            RemoveContact();
+            manager.Auth.Logout();
+            return this;
+        }
 
-        public ContactHelper(ApplicationManager manager) 
+        public ContactHelper Modify(int v, ContactData newContact)
+        {
+            SelectContact(1);
+            InitContactModification();
+            FillContactForm(newContact);
+            SubmitContactModification();
+
+            manager.Auth.Logout();
+
+            return this;
+        }
+
+        public ContactHelper(ApplicationManager manager)
             : base(manager)
         {
         }
@@ -117,5 +138,28 @@ namespace WebAddressbookTests
             return this;
         }
 
+        public ContactHelper SelectContact(int index)
+        {
+            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Lastname1'])[" + index + "]/preceding::input[1]")).Click();
+            return this;
+        }
+
+        public ContactHelper InitContactModification()
+        {
+            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
+            return this;
+        }
+
+        public ContactHelper SubmitContactModification()
+        {
+            driver.FindElement(By.XPath("(//input[@name='update'])[2]")).Click();
+            return this;
+        }
+
+        public ContactHelper RemoveContact()
+        {
+            driver.FindElement(By.XPath("(//input[@name='update'])[3]")).Click(); ;
+            return this;
+        }
     }
 }
