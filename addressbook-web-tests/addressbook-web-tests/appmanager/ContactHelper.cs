@@ -140,7 +140,7 @@ namespace WebAddressbookTests
 
         public ContactHelper SelectContact(int index)
         {
-            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Lastname1'])[" + index + "]/preceding::input[1]")).Click();
+            driver.FindElement(By.Name("selected[]")).Click();
             return this;
         }
 

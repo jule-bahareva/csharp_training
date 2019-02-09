@@ -80,7 +80,7 @@ namespace WebAddressbookTests
 
         public GroupHelper SelectGroup(int index)
         {
-            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='group_name1'])[" + index + "]/input[1]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();         
             return this;
         }
 
