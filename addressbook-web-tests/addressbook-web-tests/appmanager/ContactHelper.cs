@@ -26,7 +26,7 @@ namespace WebAddressbookTests
         public ContactHelper Remove(int v)
         {
     
-            SelectContact(1);
+            SelectContact();
             InitContactModification();
             RemoveContact();
             manager.Auth.Logout();
@@ -35,7 +35,7 @@ namespace WebAddressbookTests
 
         public ContactHelper Modify(int v, ContactData newContact)
         {
-            SelectContact(1);
+            SelectContact();
             InitContactModification();
             FillContactForm(newContact);
             SubmitContactModification();
@@ -138,7 +138,7 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper SelectContact(int index)
+        public ContactHelper SelectContact()
         {
             driver.FindElement(By.Name("selected[]")).Click();
             return this;
