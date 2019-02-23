@@ -4,18 +4,14 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
 
-
 namespace WebAddressbookTests
 {
-    [TestFixture]
-    public class GroupRemovalTests : AuthTestBase
+   public class AuthTestBase : TestBase
     {
-        
-        [Test]
-        public void RemovalGroupTest()
+        [SetUp]
+        public void SetupLogin()
         {
-            app.Groups.Remove();
-
+            app.Auth.Login(new AccountData("admin", "secret"));
         }
     }
 }

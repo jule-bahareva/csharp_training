@@ -18,9 +18,7 @@ namespace WebAddressbookTests
             InitNewContactCreation();
             FillContactForm(contact);
             SubmitContactCreation();
-
-            manager.Auth.Logout();
-            return this;
+             return this;
         }
 
         public ContactHelper Remove()
@@ -40,7 +38,7 @@ namespace WebAddressbookTests
             FillContactForm(newContact);
             SubmitContactModification();
 
-            manager.Auth.Logout();
+
 
             return this;
         }
@@ -104,7 +102,8 @@ namespace WebAddressbookTests
 
         public ContactHelper SelectContact()
         {
-            driver.FindElement(By.Name("selected[]")).Click();
+            driver.FindElement(By.LinkText("home")).Click();
+            driver.FindElement(By.XPath("//input[@id='1']")).Click();
             return this;
         }
 
@@ -117,6 +116,7 @@ namespace WebAddressbookTests
         public ContactHelper SubmitContactModification()
         {
             driver.FindElement(By.XPath("(//input[@name='update'])[2]")).Click();
+          
             return this;
         }
 
