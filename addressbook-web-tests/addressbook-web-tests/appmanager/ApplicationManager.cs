@@ -20,9 +20,9 @@ namespace WebAddressbookTests
         protected GroupHelper groupHelper;
         protected ContactHelper contactHelper;
 
+        private static ThreadLocal<ApplicationManager> app= new ThreadLocal<ApplicationManager>();
 
-
-        public ApplicationManager()
+        private ApplicationManager()
 
         {
             driver = new FirefoxDriver();
@@ -34,8 +34,7 @@ namespace WebAddressbookTests
             contactHelper = new ContactHelper(this);
         }
 
-
-        public void Stop()
+         ~ApplicationManager()
         {
             try
             {
@@ -46,6 +45,17 @@ namespace WebAddressbookTests
                 // Ignore errors if unable to close the browser
             }
         }
+
+        public static  ApplicationManager GetInstance ()
+        {
+            if (! app.IsValueCreated)
+            {
+                app.Value = new ApplicationManager();
+            }
+
+            return app.Value;
+        }
+
 
         public LoginHelper Auth
         {
