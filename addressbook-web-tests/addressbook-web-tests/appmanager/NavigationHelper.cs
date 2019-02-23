@@ -23,11 +23,11 @@ namespace WebAddressbookTests
         {
             if  (driver.Url == baseURL + "/addressbook/")
             {
-                //Thread.Sleep(10000);
+
                 return;
             }
 
-            //Thread.Sleep(10000);
+
             driver.Navigate().GoToUrl(baseURL + "/addressbook/");
         }
 
@@ -36,12 +36,17 @@ namespace WebAddressbookTests
             if (driver.Url == baseURL + "/addressbook/group.php"
                  && IsElementPresent(By.Name("new")))
             {
-                //Thread.Sleep(10000);
+
                 return;
             }
 
-            //Thread.Sleep(10000);
+
             driver.FindElement(By.LinkText("groups")).Click();
+        }
+
+        public void GoToContactsPage()
+        {
+            driver.FindElement(By.LinkText("home")).Click();
         }
     }
 }
