@@ -23,7 +23,7 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper Remove(int v)
+        public ContactHelper Remove()
         {
     
             SelectContact();
@@ -33,7 +33,7 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper Modify(int v, ContactData newContact)
+        public ContactHelper Modify(ContactData newContact)
         {
             SelectContact();
             InitContactModification();

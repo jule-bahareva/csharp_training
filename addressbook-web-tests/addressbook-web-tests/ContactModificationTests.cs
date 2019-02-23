@@ -30,7 +30,7 @@ namespace WebAddressbookTests
             newContact.Phone2 = null;
             newContact.Notes = null;
              
-           app.Contacts.Modify(1,newContact);
+           app.Contacts.Modify(newContact);
 
         }
     }
