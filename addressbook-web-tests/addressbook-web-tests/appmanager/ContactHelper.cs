@@ -41,9 +41,6 @@ namespace WebAddressbookTests
             InitContactModification();
             FillContactForm(newContact);
             SubmitContactModification();
-
-
-
             return this;
         }
 
@@ -74,7 +71,6 @@ namespace WebAddressbookTests
             Type(By.Name("email2"), contact.Email2);
             Type(By.Name("email3"), contact.Email3);
             Type(By.Name("homepage"), contact.Homepage);
-
             new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(contact.Bday);
             new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(contact.Bmonth);
             driver.FindElement(By.Name("byear")).SendKeys(contact.Byear);
@@ -139,6 +135,7 @@ namespace WebAddressbookTests
             anyContact.Ayear = "2010";
 
             Create(anyContact);
+
             manager.Navigator.GoToContactsPage();
         }
 

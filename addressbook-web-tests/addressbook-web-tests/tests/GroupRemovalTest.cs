@@ -18,11 +18,11 @@ namespace WebAddressbookTests
 
             List<GroupData> oldGroups = app.Groups.GetGroupList();
 
-            app.Groups.Remove();
+            app.Groups.Remove(0);
 
             List<GroupData> newGroups = app.Groups.GetGroupList();
-            //oldGroups.RemoveAt(0);
-            //Assert.AreEqual(oldGroups, newGroups);
+            oldGroups.RemoveAt(0);
+            Assert.AreEqual(oldGroups, newGroups);
         }
     }
 }
