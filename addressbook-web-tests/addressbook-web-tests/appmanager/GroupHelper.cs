@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -23,12 +24,12 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public GroupHelper Modify(GroupData newData, GroupData group)
+        public GroupHelper Modify(GroupData newData)
         {
          
             manager.Navigator.GoToGroupsPage();
-
-            SelectGroup(1, group);
+            AddGroupIfNotFound();
+            SelectGroup(1);
             InitGroupModification();
             FillGroupForm(newData);
             SubmitGroupModification();
@@ -36,12 +37,13 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public GroupHelper Remove(GroupData group)
+
+        public GroupHelper Remove()
         {
        
             manager.Navigator.GoToGroupsPage();
-
-            SelectGroup(1, group);
+            AddGroupIfNotFound();
+            SelectGroup(1);
             RemoveGroup();
             ReturnToGroupsPage();
             return this;
@@ -74,22 +76,10 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public GroupHelper SelectGroup(int index, GroupData group)
+        public GroupHelper SelectGroup(int index)
         {
-            if (IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + index + "]")))
-            {
-                driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
-            }
-            else
-            {
-                manager.Navigator.GoToGroupsPage();
-                InitNewGroupCreation();
-                FillGroupForm(group);
-                SubmitGroupCreation();
-                manager.Navigator.GoToGroupsPage();
-                driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
-            }
-
+                 driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+        
             return this;
 
         }
@@ -103,7 +93,6 @@ namespace WebAddressbookTests
         public GroupHelper ReturnToGroupsPage()
         {
             driver.FindElement(By.LinkText("group page")).Click();
-            driver.FindElement(By.LinkText("Logout")).Click();
             return this;
         }
 
@@ -118,5 +107,38 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("edit")).Click();
             return this;
         }
+
+        public List<GroupData> GetGroupList()
+        {
+            List<GroupData> groups = new List<GroupData>();
+            manager.Navigator.GoToGroupsPage();
+
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
+
+            foreach (IWebElement element in elements)
+            {
+            groups.Add(new GroupData(element.Text));
+            }
+            return groups;
+        }
+
+        public void AddGroupIfNotFound()
+        {
+            if (IsGroupExists())
+
+            {
+                return;
+            }
+
+            GroupData anyGroup = new GroupData("addedGroup1");
+            Create(anyGroup);
+        }
+
+
+        public bool IsGroupExists()
+        {
+            return IsElementPresent(By.Name("selected[]"));
+        }
+
     }
 }

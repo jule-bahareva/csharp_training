@@ -14,6 +14,19 @@ namespace WebAddressbookTests
         {
             ContactData contact = new ContactData("Firstname1", "Lastname1");
 
+            contact.Company = "Company1";
+            contact.Address = "City1";
+            contact.Home = "Home1";
+            contact.Mobile = "123456789";
+            contact.Work = "1234567899";
+            contact.Email = "email@test.test";
+            contact.Bday = "1";
+            contact.Bmonth = "May";
+            contact.Byear = "2000";
+            contact.Aday = "2";
+            contact.Amonth = "November";
+            contact.Ayear = "2010";
+
             app.Contacts.Create(contact);
 
         }

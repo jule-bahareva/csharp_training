@@ -13,9 +13,6 @@ namespace WebAddressbookTests
         public void ContactModificationTest()
         {
 
-
-            ContactData contact = new ContactData("Firstname1", "Lastname1");
-
             ContactData newContact = new ContactData("Edited_Firstname", "Edited_Lastname");
             newContact.Middlename = null;
             newContact.Nickname = null;
@@ -33,8 +30,14 @@ namespace WebAddressbookTests
             newContact.Address2 = null;
             newContact.Phone2 = null;
             newContact.Notes = null;
-             
-           app.Contacts.Modify(newContact, contact);
+            newContact.Bday = "10";
+            newContact.Bmonth = "June";
+            newContact.Byear = "2001";
+            newContact.Aday = "20";
+            newContact.Amonth = "June";
+            newContact.Ayear = "2005";
+
+            app.Contacts.Modify(newContact);
 
         }
     }

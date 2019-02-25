@@ -22,22 +22,22 @@ namespace WebAddressbookTests
              return this;
         }
 
-        public ContactHelper Remove(ContactData contact)
+        public ContactHelper Remove()
         {
             manager.Navigator.GoToContactsPage();
-
-            SelectContact(contact);
+            AddConactIfNotFound();
+            SelectContact();
             InitContactModification();
             RemoveContact();
             manager.Auth.Logout();
             return this;
         }
 
-        public ContactHelper Modify(ContactData newContact, ContactData contact)
+        public ContactHelper Modify(ContactData newContact)
         {
             manager.Navigator.GoToContactsPage();
-
-            SelectContact(contact);
+            AddConactIfNotFound();
+            SelectContact();
             InitContactModification();
             FillContactForm(newContact);
             SubmitContactModification();
@@ -74,24 +74,13 @@ namespace WebAddressbookTests
             Type(By.Name("email2"), contact.Email2);
             Type(By.Name("email3"), contact.Email3);
             Type(By.Name("homepage"), contact.Homepage);
-            //driver.FindElement(By.Name("bday")).Click();
-            //new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(contact.Bday);
-            //driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[16]")).Click();
-            //driver.FindElement(By.Name("bmonth")).Click();
-            //new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(contact.Bmonth);
-            //driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[46]")).Click();
-            //driver.FindElement(By.Name("byear")).Click();
-            //driver.FindElement(By.Name("byear")).Clear();
-            //driver.FindElement(By.Name("byear")).SendKeys(contact.Byear);
-            //driver.FindElement(By.Name("aday")).Click();
-            //new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText(contact.Aday);
-            //driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Anniversary:'])[1]/following::option[20]")).Click();
-            //driver.FindElement(By.Name("amonth")).Click();
-            //new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText(contact.Amonth);
-            //driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Anniversary:'])[1]/following::option[46]")).Click();
-            //driver.FindElement(By.Name("ayear")).Click();
-            //driver.FindElement(By.Name("ayear")).Clear();
-            //driver.FindElement(By.Name("ayear")).SendKeys(contact.Ayear);
+
+            new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(contact.Bday);
+            new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(contact.Bmonth);
+            driver.FindElement(By.Name("byear")).SendKeys(contact.Byear);
+            new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText(contact.Aday);
+            new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText(contact.Amonth);
+            driver.FindElement(By.Name("ayear")).SendKeys(contact.Ayear);
             Type(By.Name("address2"), contact.Address2);
             Type(By.Name("phone2"), contact.Phone2);
             Type(By.Name("notes"), contact.Notes);
@@ -104,19 +93,11 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper SelectContact(ContactData contact)
+        public ContactHelper SelectContact()
         {
-            if(IsElementPresent(By.Name("selected[]")))
-            {
+
                 driver.FindElement(By.Name("selected[]")).Click();
-            }
-            else
-            {
-            InitNewContactCreation();
-            FillContactForm(contact);
-            SubmitContactCreation();
-            manager.Navigator.GoToContactsPage();
-            }
+
 
             return this;
         }
@@ -138,6 +119,33 @@ namespace WebAddressbookTests
         {
             driver.FindElement(By.XPath("(//input[@name='update'])[3]")).Click(); ;
             return this;
+        }
+
+        public void AddConactIfNotFound()
+        {
+            if (IsContactExists())
+
+            {
+                return;
+            }
+
+            ContactData anyContact = new ContactData("AnyFirstName", "AnyLastName");
+
+            anyContact.Bday = "1";
+            anyContact.Bmonth = "May";
+            anyContact.Byear = "2000";
+            anyContact.Aday = "2";
+            anyContact.Amonth = "November";
+            anyContact.Ayear = "2010";
+
+            Create(anyContact);
+            manager.Navigator.GoToContactsPage();
+        }
+
+
+        public bool IsContactExists()
+        {
+            return IsElementPresent(By.Name("selected[]"));
         }
     }
 }
