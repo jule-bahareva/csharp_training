@@ -25,7 +25,7 @@ namespace WebAddressbookTests
         public ContactHelper Remove()
         {
             manager.Navigator.GoToContactsPage();
-            AddConactIfNotFound();
+
             SelectContact();
             InitContactModification();
             RemoveContact();
@@ -36,7 +36,7 @@ namespace WebAddressbookTests
         public ContactHelper Modify(ContactData newContact)
         {
             manager.Navigator.GoToContactsPage();
-            AddConactIfNotFound();
+
             SelectContact();
             InitContactModification();
             FillContactForm(newContact);
@@ -117,31 +117,9 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public void AddConactIfNotFound()
-        {
-            if (IsContactExists())
-
-            {
-                return;
-            }
-
-            ContactData anyContact = new ContactData("AnyFirstName", "AnyLastName");
-
-            anyContact.Bday = "1";
-            anyContact.Bmonth = "May";
-            anyContact.Byear = "2000";
-            anyContact.Aday = "2";
-            anyContact.Amonth = "November";
-            anyContact.Ayear = "2010";
-
-            Create(anyContact);
-
-            manager.Navigator.GoToContactsPage();
-        }
-
-
         public bool IsContactExists()
         {
+            manager.Navigator.GoToContactsPage();
             return IsElementPresent(By.Name("selected[]"));
         }
     }

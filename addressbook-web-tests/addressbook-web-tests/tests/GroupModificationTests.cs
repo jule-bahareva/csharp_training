@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Threading;
 using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
 
 namespace WebAddressbookTests
 {
@@ -16,6 +19,16 @@ namespace WebAddressbookTests
         public void GroupModificationTest()
         {
 
+
+            //prepare 
+            if (!app.Groups.IsGroupExists())
+
+            {
+                GroupData anyGroup = new GroupData("addedGroup1");
+                app.Groups.Create(anyGroup);
+            }
+
+            //action 
             GroupData newData = new GroupData("edited_group_name");
             newData.Header = null;
             newData.Footer = null;

@@ -13,6 +13,23 @@ namespace WebAddressbookTests
         public void ContactModificationTest()
         {
 
+
+            //prepare
+            if (!app.Contacts.IsContactExists())
+
+            {
+                ContactData anyContact = new ContactData("AnyFirstName", "AnyLastName");
+                anyContact.Bday = "1";
+                anyContact.Bmonth = "May";
+                anyContact.Byear = "2000";
+                anyContact.Aday = "2";
+                anyContact.Amonth = "November";
+                anyContact.Ayear = "2010";
+
+                app.Contacts.Create(anyContact);
+            }
+                
+            //action
             ContactData newContact = new ContactData("Edited_Firstname", "Edited_Lastname");
             newContact.Middlename = null;
             newContact.Nickname = null;

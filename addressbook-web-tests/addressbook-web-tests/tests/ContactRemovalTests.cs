@@ -12,7 +12,22 @@ namespace WebAddressbookTests
         [Test]
         public void ContactRemovalTest()
         {
-            ContactData contact = new ContactData("Firstname1", "Lastname1");
+            //prepare
+            if (!app.Contacts.IsContactExists())
+
+            {
+                ContactData anyContact = new ContactData("AnyFirstName", "AnyLastName");
+                anyContact.Bday = "1";
+                anyContact.Bmonth = "May";
+                anyContact.Byear = "2000";
+                anyContact.Aday = "2";
+                anyContact.Amonth = "November";
+                anyContact.Ayear = "2010";
+
+                app.Contacts.Create(anyContact);
+            }
+
+            //action
             app.Contacts.Remove();
         }
     }

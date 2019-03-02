@@ -16,6 +16,16 @@ namespace WebAddressbookTests
         public void RemovalGroupTest()
         {
 
+
+            //prepare 
+            if (!app.Groups.IsGroupExists())
+
+            {
+                GroupData anyGroup = new GroupData("addedGroup1");
+                app.Groups.Create(anyGroup);
+            }
+
+            //action
             List<GroupData> oldGroups = app.Groups.GetGroupList();
 
             app.Groups.Remove(0);
