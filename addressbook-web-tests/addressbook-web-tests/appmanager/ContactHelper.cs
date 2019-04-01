@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -19,7 +20,7 @@ namespace WebAddressbookTests
             InitNewContactCreation();
             FillContactForm(contact);
             SubmitContactCreation();
-             return this;
+            return this;
         }
 
         public ContactHelper Remove()
@@ -92,7 +93,7 @@ namespace WebAddressbookTests
         public ContactHelper SelectContact()
         {
 
-                driver.FindElement(By.Name("selected[]")).Click();
+            driver.FindElement(By.Name("selected[]")).Click();
 
 
             return this;
@@ -107,7 +108,7 @@ namespace WebAddressbookTests
         public ContactHelper SubmitContactModification()
         {
             driver.FindElement(By.XPath("(//input[@name='update'])[2]")).Click();
-          
+
             return this;
         }
 
@@ -122,5 +123,26 @@ namespace WebAddressbookTests
             manager.Navigator.GoToContactsPage();
             return IsElementPresent(By.Name("selected[]"));
         }
+
+        public List<ContactData> GetContactList()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+            manager.Navigator.GoToContactsPage();
+
+            ICollection<IWebElement> rows = driver.FindElements(By.Name("entry"));
+
+            foreach (IWebElement element in rows)
+            {
+                IList<IWebElement> cells = element.FindElements(By.TagName("td"));
+
+                ContactData contactInList = new ContactData(cells[2].Text,cells[1].Text);
+                contacts.Add(contactInList);
+            }
+
+            return contacts;
+        }
+
+        }
     }
-}
+
+
