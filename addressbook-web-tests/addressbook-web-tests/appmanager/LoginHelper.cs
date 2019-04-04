@@ -49,12 +49,19 @@ namespace WebAddressbookTests
             return IsElementPresent(By.Name("logout"));
         }
 
+
         public bool IsLoggedIn(AccountData account)
         {
             Thread.Sleep(1000);
             return IsLoggedIn()
-                && driver.FindElement(By.Name("logout")).FindElement(By.TagName("b")).Text
-                  == "(" + account.Username + ")";
+                && GetLoggedUserName() == account.Username;
+        }
+
+
+        private string GetLoggedUserName()
+        {
+            string text = driver.FindElement(By.Name("logout")).FindElement(By.TagName("b")).Text;
+            return text.Substring(1, text.Length - 2); //вырезаем имя залогиненного пользователя в скобках  
         }
     }
 }

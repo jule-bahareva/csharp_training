@@ -17,9 +17,9 @@ namespace WebAddressbookTests
 
             contact.Company = "Company1";
             contact.Address = "City1";
-            contact.Home = "Home1";
-            contact.Mobile = "123456789";
-            contact.Work = "1234567899";
+            contact.Home = "+123456789";
+            contact.Mobile = "+123456789";
+            contact.Work = "+1234567899";
             contact.Email = "email@test.test";
             contact.Bday = "1";
             contact.Bmonth = "May";
