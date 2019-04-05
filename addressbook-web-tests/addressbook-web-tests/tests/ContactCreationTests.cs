@@ -21,6 +21,8 @@ namespace WebAddressbookTests
             contact.Mobile = "+123456789";
             contact.Work = "+1234567899";
             contact.Email = "email@test.test";
+            contact.Email2 = "email2@test.test";
+            contact.Email3 = "emails3@test.test";
             contact.Bday = "1";
             contact.Bmonth = "May";
             contact.Byear = "2000";
