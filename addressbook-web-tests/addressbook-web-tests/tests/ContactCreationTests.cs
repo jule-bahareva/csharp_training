@@ -29,6 +29,7 @@ namespace WebAddressbookTests
             contact.Aday = "2";
             contact.Amonth = "November";
             contact.Ayear = "2010";
+            contact.Homepage = "homepage.test";
 
             List<ContactData> oldContacts = app.Contacts.GetContactList();
 

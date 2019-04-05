@@ -11,6 +11,7 @@ namespace WebAddressbookTests
     {
         private string allPhones;
         private string allEmails;
+        private string allDetails;
 
         public ContactData(string firstname, string lastname)
         {
@@ -80,6 +81,117 @@ namespace WebAddressbookTests
             set
             {
                 allEmails = value;
+            }
+        }
+
+        public string AllDetails
+        {
+            get
+            {
+                if (allDetails != null)
+                {
+                    return allDetails;
+                }
+                else
+                {
+                    allDetails = Firstname + " " + Lastname;
+
+                    if (Middlename != "")
+                    {
+                        allDetails = Firstname + " " + Middlename + " " +  Lastname;
+                    }
+
+                    if (Nickname != "")
+                    {
+                        allDetails = allDetails + "\r\n" + Nickname; 
+                    }
+
+                    if (Title != "")
+                    {
+                        allDetails = allDetails + "\r\n" + Title;
+                    }
+
+                    if (Company != "")
+                    {
+                        allDetails = allDetails + "\r\n" + Company;
+                    }
+
+                    if (Address != "")
+                    {
+                        allDetails = allDetails + "\r\n" + Address;
+                    }
+
+                    if (Home != "" || Mobile != "" || Work != "" || Fax != "")
+                    {
+                        allDetails = allDetails + "\r\n";
+                    }
+
+                    if (Home != "")
+                    {
+                        allDetails = allDetails + "\r\nH:" +" " + Home;
+                    }
+
+                    if (Mobile != "")
+                    {
+                        allDetails = allDetails + "\r\nM:" + " " + Mobile;
+                    }
+
+                    if (Work != "")
+                    {
+                        allDetails = allDetails + "\r\nW:" + " " + Work;
+                    }
+
+                    if (Fax != "")
+                    {
+                        allDetails = allDetails + "\r\nF:" + " " + Fax;
+                    }
+
+                    if (Email != "" || Email2 != "" || Email3 != "" || Homepage != "")
+                    {
+                        allDetails = allDetails + "\r\n";
+                    }
+
+                    if (Email != "")
+                    {
+                        allDetails = allDetails + "\r\n" + Email;
+                    }
+
+                    if (Email2 != "")
+                    {
+                        allDetails = allDetails + "\r\n" + Email2;
+                    }
+
+                    if (Email3 != "")
+                    {
+                        allDetails = allDetails + "\r\n" + Email3;
+                    }
+                    if (Homepage != "")
+                    {
+                        allDetails = allDetails + "\r\n" + "Homepage:" +"\r\n" + Homepage;
+                    }
+
+                    if (Byear != "" || Ayear != "" )
+                    {
+                        allDetails = allDetails + "\r\n";
+                    }
+
+                    if (Byear != "")
+                    {
+                        allDetails = allDetails + "\r\n" + "Birthday" + " " + Bday+ "." + " " + Bmonth + " " + Byear;
+                    }
+                    if (Ayear != "")
+                    {
+                        allDetails = allDetails + "\r\n" + "Anniversary" + " " + Aday + "." + " " + Amonth + " " + Ayear;
+                    }
+    
+
+                    return allDetails;
+                }
+
+            }
+            set
+            {
+                allDetails = value;
             }
         }
 

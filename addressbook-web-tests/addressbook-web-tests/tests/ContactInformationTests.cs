@@ -32,8 +32,10 @@ namespace WebAddressbookTests
             string fromDetails = app.Contacts.GetContactInfoFromDetails(0);
 
             //verification
-
-            Assert.AreEqual(fromForm, fromDetails);
+ 
+            Console.Out.Write("Edit Contact Form data:\r\n" + fromForm.AllDetails + "\r\n");
+            Console.Out.Write("\r\n\r\n" + "Contact Details Page:\r\n"  + fromDetails + "\r\n");
+            Assert.AreEqual(fromForm.AllDetails, fromDetails);
      
  
         }
