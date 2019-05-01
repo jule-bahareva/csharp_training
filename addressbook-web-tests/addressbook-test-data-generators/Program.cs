@@ -7,6 +7,7 @@ using WebAddressbookTests;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace addressbook_test_data_generators
 {
@@ -39,6 +40,10 @@ namespace addressbook_test_data_generators
             {
                 writeGroupsToXmlFile(groups, writer);
             }
+            else if (format == "json")
+            {
+                writeGroupsToJsonFile(groups, writer);
+            }
             else
             {
                 System.Console.Out.Write("Unrecognized format" + format);
@@ -63,6 +68,11 @@ namespace addressbook_test_data_generators
             new XmlSerializer(typeof(List<GroupData>)).Serialize(writer, groups);
         }
 
+        static void writeGroupsToJsonFile(List<GroupData> groups, StreamWriter writer)
 
+        {
+            writer.Write(JsonConvert.SerializeObject(groups, Newtonsoft.Json.Formatting.Indented));
+
+        }
     }
 }
