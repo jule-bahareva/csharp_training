@@ -82,7 +82,9 @@
     <Compile Include="appmanager\AuthTestBase.cs" />
     <Compile Include="model\AddressBookDB.cs" />
     <Compile Include="model\GroupContactRelation.cs" />
+    <Compile Include="tests\AddingContactToGrouptests.cs" />
     <Compile Include="tests\ContactInformationTests.cs" />
+    <Compile Include="tests\ContactTestBase.cs" />
     <Compile Include="tests\GroupTestBase.cs" />
     <Compile Include="tests\LoginTests.cs" />
     <Compile Include="tests\ContactModificationTests.cs" />
@@ -106,7 +108,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="contacts.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="groups.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

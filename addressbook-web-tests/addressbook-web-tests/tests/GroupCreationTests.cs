@@ -108,15 +108,7 @@ namespace WebAddressbookTests
             Assert.AreEqual(oldGroups, newGroups);
         }
 
-        [Test]
-        public void DBConnectivityTest()
-        {
-            foreach (ContactData contact in GroupData.GetAll()[0].GetContacts())
-            {
-                Console.Out.WriteLine(contact);
-            }
 
-        }
     }
 
 

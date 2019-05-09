@@ -14,7 +14,7 @@ using System.IO;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class ContactCreationTests : AuthTestBase
+    public class ContactCreationTests : ContactTestBase
     {
 
         private static IEnumerable<ContactData> RandomContactDataProvider()
@@ -73,14 +73,14 @@ namespace WebAddressbookTests
         {
            
 
-            List<ContactData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = ContactData.GetAll();
 
             app.Contacts.Create(contact);
 
           
             Assert.AreEqual(oldContacts.Count + 1, app.Contacts.GetContactCount());
 
-            List<ContactData> newContacts = app.Contacts.GetContactList();
+            List<ContactData> newContacts = ContactData.GetAll();
             oldContacts.Add(contact);
             oldContacts.Sort();
             newContacts.Sort();
@@ -89,5 +89,16 @@ namespace WebAddressbookTests
 
 
         }
+
+        [Test]
+        public void DBConnectivityTest()
+        {
+            foreach (ContactData contact in ContactData.GetAll())
+            {
+                Console.Out.WriteLine(contact.Deprecated );
+            }
+
+        }
+
     }
 }

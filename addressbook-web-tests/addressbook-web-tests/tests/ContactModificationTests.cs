@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Threading;
 using NUnit.Framework;
+using OpenQA.Selenium;
 
 namespace WebAddressbookTests
 {
-    public class ContactModificationTests : AuthTestBase
+    public class ContactModificationTests : ContactTestBase
     {
         [Test]
         public void ContactModificationTest()
@@ -55,19 +56,20 @@ namespace WebAddressbookTests
             newContact.Ayear = "2005";
 
 
-            List<ContactData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = ContactData.GetAll();
 
             ContactData oldDataContact = oldContacts[0]; 
 
-            app.Contacts.Modify(newContact);
+            app.Contacts.Modify(oldDataContact,newContact);
 
             Assert.AreEqual(oldContacts.Count, app.Contacts.GetContactCount());
 
-            List<ContactData> newContacts = app.Contacts.GetContactList();
- 
+            List<ContactData> newContacts = ContactData.GetAll();
+
             oldContacts[0].Firstname = newContact.Firstname;
             oldContacts[0].Lastname = newContact.Lastname;
-               
+
+     
             oldContacts.Sort();
             newContacts.Sort();
 
@@ -77,7 +79,7 @@ namespace WebAddressbookTests
             {
                 if (contact.Id == oldDataContact.Id)
                 {
-                    Assert.AreEqual(newContacts, oldContacts);
+                    Assert.AreEqual(oldDataContact.Lastname, contact.Lastname);
                 }
 
             }
