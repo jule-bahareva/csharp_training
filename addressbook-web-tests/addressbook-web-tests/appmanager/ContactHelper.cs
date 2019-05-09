@@ -22,7 +22,9 @@ namespace WebAddressbookTests
             SubmitContactCreation();
             return this;
         }
- 
+
+
+
         public ContactData GetContactInfoFromTable(int index)
         {
             manager.Navigator.GoToContactsPage();
@@ -275,6 +277,28 @@ namespace WebAddressbookTests
             new WebDriverWait(driver, TimeSpan.FromSeconds(10))
                 .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
             return this;
+        }
+
+        public ContactHelper RemoveContactFromGroup(GroupData group)
+        {
+            manager.Navigator.GoToContactsPage();
+            SelectGroupFilter(group.Name);
+            SelectContact();
+            SubmitRemoveFromGroup();
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+                .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
+            return this;
+        }
+
+        public void SubmitRemoveFromGroup()
+        {
+            driver.FindElement(By.Name("remove")).Click();
+        }
+
+        public void SelectGroupFilter(string name)
+        {
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText(name);
+
         }
 
         public void CommitAddingContactToGroup()
