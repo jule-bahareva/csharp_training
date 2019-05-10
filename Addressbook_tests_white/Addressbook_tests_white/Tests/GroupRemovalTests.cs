@@ -5,24 +5,29 @@ using NUnit.Framework;
 namespace Addressbook_tests_white
 {
     [TestFixture]
-    public class GroupCreationTests : TestBase
+    public class GroupRemovalTests : TestBase
     {
         [Test]
-        public void GroupCreationTest()
+        public void GroupRemovalTest()
         {
             List<GroupData> oldGroups = app.Groups.GetGroupList();
-            GroupData newGroup = new GroupData()
-            {
-                Name = "white"
-            };
 
-            app.Groups.Add(newGroup);
+            if (oldGroups.Count < 2)
+            {
+                app.Groups.Add(new GroupData()
+                { Name = "AnyGroup"
+                });
+
+                oldGroups = app.Groups.GetGroupList();
+            }
+
+            app.Groups.Remove(0);
 
             List<GroupData> newGroups = app.Groups.GetGroupList();
-            oldGroups.Add(newGroup);
+            oldGroups.RemoveAt(0);
             oldGroups.Sort();
             newGroups.Sort();
-
+  
             Assert.AreEqual(oldGroups, newGroups);
         }
     }
