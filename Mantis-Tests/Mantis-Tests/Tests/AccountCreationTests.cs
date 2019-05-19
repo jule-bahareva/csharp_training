@@ -13,10 +13,10 @@ namespace Mantis_Tests
         [SetUp]
         public void SetUpConfig()
         {
-            app.Ftp.BackupFile("/config/config_inc.php");
-            using (Stream localFile = File.Open("/config/config_inc.php", FileMode.Open))
+            app.Ftp.BackupFile("/config_inc.php");
+            using (Stream localFile = File.Open("D:/csharp-training/csharp_training/Mantis-Tests/config_inc.php", FileMode.Open))
             {
-                app.Ftp.Upload("/config/config_inc.php", localFile);
+                app.Ftp.Upload("/config_inc.php", localFile);
             }
 
 
@@ -42,7 +42,7 @@ namespace Mantis_Tests
 
         public void RestoreConfig()
         {
-            app.Ftp.RestoreBackupFile("/config/config_inc.php");
+            app.Ftp.RestoreBackupFile("/config_inc.php");
  
 
         }
