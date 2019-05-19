@@ -38,6 +38,10 @@ namespace Mantis_Tests
            
             };
 
+
+            app.James.Remove(account);
+            app.James.Add(account);
+
             app.Registration.Register(account);
         }
 
