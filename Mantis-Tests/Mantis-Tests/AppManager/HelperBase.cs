@@ -18,7 +18,7 @@ namespace Mantis_Tests
         public HelperBase(ApplicationManager manager)
         {
             this.manager = manager;
-            this.driver = manager.Driver;
+            driver = manager.Driver;
         }
 
         public void Type(By locator, string text)
@@ -26,7 +26,6 @@ namespace Mantis_Tests
 
             if (text != null)
             {
-                driver.FindElement(locator).Click();
                 driver.FindElement(locator).Clear();
                 driver.FindElement(locator).SendKeys(text);
             }
