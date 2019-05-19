@@ -19,7 +19,7 @@ namespace Mantis_Tests
 
         public RegistrationHelper Registration { get; set; }
         public FtpHelper Ftp { get; set; }
-       // public static string PATH = "D:/csharp-training/chromedriver.exe";
+
 
         private static ThreadLocal<ApplicationManager> app= new ThreadLocal<ApplicationManager>();
 

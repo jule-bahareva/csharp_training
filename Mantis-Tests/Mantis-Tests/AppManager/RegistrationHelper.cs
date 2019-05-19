@@ -24,13 +24,13 @@ namespace Mantis_Tests
         private void OpenRegistrationForm()
         {
 
-            driver.FindElement(By.CssSelector("back-to-login-link pull-left")).Click();
+            driver.FindElement(By.CssSelector("a.back-to-login-link.pull-left")).Click();
 
         }
 
         private void SubmitRegistration()
         {
-            driver.FindElement(By.CssSelector("input.button")).Click();
+            driver.FindElement(By.XPath("//input[@value='Зарегистрироваться']")).Click();
         }
 
         private void FillRegistrationForm(AccountData account)

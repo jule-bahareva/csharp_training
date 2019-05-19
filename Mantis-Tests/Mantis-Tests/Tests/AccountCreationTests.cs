@@ -8,16 +8,16 @@ namespace Mantis_Tests
 {
 
 
-     [TestFixture]
+  
 
     public class AccountCreationTests : TestBase
     {
-        [SetUp]
+        [TestFixtureSetUp]
 
         public void SetUpConfig()
         {
             app.Ftp.BackupFile("/config_inc.php");
-            using (Stream localFile = File.Open("D:/csharp-training/csharp_training/Mantis-Tests/config_inc.php", FileMode.Open))
+            using (Stream localFile = File.Open("config_inc.php", FileMode.Open))
             {
                 app.Ftp.Upload("/config_inc.php", localFile);
             }
@@ -41,7 +41,7 @@ namespace Mantis_Tests
             app.Registration.Register(account);
         }
 
-        [TearDown]
+        [TestFixtureTearDown]
 
         public void RestoreConfig()
         {
