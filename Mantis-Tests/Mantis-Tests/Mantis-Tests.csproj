@@ -74,15 +74,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppManager\ApplicationManager.cs" />
+    <Compile Include="AppManager\AuthTestBase.cs" />
     <Compile Include="AppManager\FtpHelper.cs" />
     <Compile Include="AppManager\HelperBase.cs" />
     <Compile Include="AppManager\JamesHelper.cs" />
+    <Compile Include="AppManager\LoginHelper.cs" />
     <Compile Include="AppManager\MailHelper.cs" />
+    <Compile Include="AppManager\ManagementMenuHelper.cs" />
+    <Compile Include="AppManager\ProjectManagementHelper.cs" />
     <Compile Include="AppManager\RegistrationHelper.cs" />
     <Compile Include="AppManager\TelnetInterface.cs" />
     <Compile Include="Model\AccountData.cs" />
+    <Compile Include="Model\ProjectData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\AccountCreationTests.cs" />
+    <Compile Include="Tests\ProjectCreationTests.cs" />
+    <Compile Include="Tests\RemoveProjectTests.cs" />
     <Compile Include="Tests\TestBase.cs" />
   </ItemGroup>
   <ItemGroup>

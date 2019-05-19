@@ -21,6 +21,9 @@ namespace Mantis_Tests
         public FtpHelper Ftp { get; set; }
         public JamesHelper James { get; private set; }
         public MailHelper Mail { get; private set; }
+        public ProjectManagementHelper Projects { get; set; }
+        public ManagementMenuHelper Menu { get; set; }
+        public LoginHelper Auth { get; set; }
 
         private static ThreadLocal<ApplicationManager> app= new ThreadLocal<ApplicationManager>();
 
@@ -33,6 +36,9 @@ namespace Mantis_Tests
             Ftp = new FtpHelper(this);
             James = new JamesHelper(this);
             Mail = new MailHelper(this);
+            Projects = new ProjectManagementHelper(this);
+            Menu = new ManagementMenuHelper(this, baseURL);
+            Auth = new LoginHelper(this);
 
         }
 

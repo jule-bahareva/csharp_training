@@ -7,9 +7,6 @@ using System.IO;
 namespace Mantis_Tests
 {
 
-
-  
-
     public class AccountCreationTests : TestBase
     {
         [TestFixtureSetUp]
