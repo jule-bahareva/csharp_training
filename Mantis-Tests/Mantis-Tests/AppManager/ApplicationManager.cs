@@ -5,6 +5,7 @@ using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
 
@@ -18,13 +19,14 @@ namespace Mantis_Tests
 
         public RegistrationHelper Registration { get; set; }
         public FtpHelper Ftp { get; set; }
+       // public static string PATH = "D:/csharp-training/chromedriver.exe";
 
         private static ThreadLocal<ApplicationManager> app= new ThreadLocal<ApplicationManager>();
 
         private ApplicationManager()
 
         {
-            driver = new FirefoxDriver();
+            driver = new ChromeDriver();
             baseURL = "http://localhost";
             Registration = new RegistrationHelper(this);
             Ftp = new FtpHelper(this);

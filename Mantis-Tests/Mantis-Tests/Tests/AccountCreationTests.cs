@@ -7,10 +7,13 @@ using System.IO;
 namespace Mantis_Tests
 {
 
+
      [TestFixture]
+
     public class AccountCreationTests : TestBase
     {
         [SetUp]
+
         public void SetUpConfig()
         {
             app.Ftp.BackupFile("/config_inc.php");
@@ -19,11 +22,11 @@ namespace Mantis_Tests
                 app.Ftp.Upload("/config_inc.php", localFile);
             }
 
-
         }
 
 
         [Test]
+
         public void AccountRegistrationTest()
         {
 
