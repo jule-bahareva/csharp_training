@@ -24,6 +24,7 @@ namespace Mantis_Tests
         public ProjectManagementHelper Projects { get; set; }
         public ManagementMenuHelper Menu { get; set; }
         public LoginHelper Auth { get; set; }
+        public AdminHelper Admin { get; set; }
 
         private static ThreadLocal<ApplicationManager> app= new ThreadLocal<ApplicationManager>();
 
@@ -31,7 +32,7 @@ namespace Mantis_Tests
 
         {
             driver = new ChromeDriver();
-            baseURL = "http://localhost";
+            baseURL = "http://localhost/mantisbt-2.21.0";
             Registration = new RegistrationHelper(this);
             Ftp = new FtpHelper(this);
             James = new JamesHelper(this);
@@ -39,6 +40,7 @@ namespace Mantis_Tests
             Projects = new ProjectManagementHelper(this);
             Menu = new ManagementMenuHelper(this, baseURL);
             Auth = new LoginHelper(this);
+            Admin = new AdminHelper(this,baseURL);
 
         }
 

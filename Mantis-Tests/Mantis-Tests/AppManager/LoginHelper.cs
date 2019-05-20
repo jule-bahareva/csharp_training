@@ -56,20 +56,5 @@ namespace Mantis_Tests
             return IsElementPresent(By.CssSelector("i.fa.fa-user.home-icon.active"));
         }
 
-       /*
-        public bool IsLoggedIn(AccountData account)
-        {
-            Thread.Sleep(1000);
-            return IsLoggedIn()
-                && GetLoggedUserName() == account.Name;
-        }
-
-
-        private string GetLoggedUserName()
-        {
-            string text = driver.FindElement(By.Name("logout")).FindElement(By.TagName("b")).Text;
-            return text.Substring(1, text.Length - 2); //вырезаем имя залогиненного пользователя в скобках  
-        }
-        */
     }
 }

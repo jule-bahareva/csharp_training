@@ -17,35 +17,17 @@ namespace Mantis_Tests
             this.baseURL = baseURL;
         }
 
-        //TODO
-        //
-        public void OpenMainPage()
-        {
-            if (driver.Url == baseURL + "/addressbook/")
-            {
-
-                return;
-            }
-
-
-            driver.Navigate().GoToUrl(baseURL + "/addressbook/");
-        }
-
-
 
 
         public void OpenProjectManagementPage()
         {
-            if (driver.Url == baseURL + "/mantisbt-2.21.0/manage_proj_page.php")
+            if (driver.Url == baseURL + "/manage_proj_page.php")
             {
                 return;
             }
 
-            driver.Navigate().GoToUrl(baseURL + "/mantisbt-2.21.0/manage_proj_page.php");
+            driver.Navigate().GoToUrl(baseURL + "/manage_proj_page.php");
         }
-
-  
-
 
 
     }
