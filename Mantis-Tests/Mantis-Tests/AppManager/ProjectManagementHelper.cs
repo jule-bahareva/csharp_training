@@ -46,6 +46,7 @@ namespace Mantis_Tests
             manager.Menu.OpenProjectManagementPage();
             SelectProject();
             SubmitRemovalProject();
+            SubmitRemovalProject();
             manager.Menu.OpenProjectManagementPage();
             return this;
         }
@@ -60,5 +61,38 @@ namespace Mantis_Tests
             driver.FindElements(By.TagName("td"))[0]
                 .FindElement(By.TagName("a")).Click();
         }
+
+       
+
+        public List<ProjectData> GetProjects()
+        {
+            List<ProjectData> projects = new List<ProjectData>();
+     
+            manager.Menu.OpenProjectManagementPage();
+
+            IList<IWebElement> rows = driver.FindElements(By.ClassName("table-responsive"))[0].FindElements(By.TagName("tr"));
+            foreach (IWebElement row in rows)
+            {
+                if (row != rows[0])
+                {
+                    IWebElement link = row.FindElement(By.TagName("a"));
+                    string name = link.Text;
+                    string href = link.GetAttribute("href");
+                    Match m = Regex.Match(href, @"\d+$");
+                    string id = m.Value;
+
+                    projects.Add(new ProjectData()
+                    {
+                        Name = name,
+                        Id = id
+                    });
+                }
+            }
+
+            return projects;
+        }
+
+
+
     }
 }

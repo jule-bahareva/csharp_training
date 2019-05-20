@@ -9,25 +9,21 @@ namespace Mantis_Tests
     [TestFixture]
     public class RemoveProjectTests : AuthTestBase
     {
+        [Test]
+        public void ProjectRemovalTest()
+        {
+            List<ProjectData> oldProjectsList = app.Projects.GetProjects();
+
+            app.Projects.Remove();
         
-            [Test]
-            public void ProjectRemovalTest()
-            {
 
-   
+            Assert.AreEqual(oldProjectsList.Count - 1, app.Projects.GetProjects().Count);
 
-                //List<ProjectData> oldProjectsList = app.Projects.GetProjectsList();
-
-                app.Projects.Remove();
-
-                //Assert.AreEqual(oldProjectsList.Count - 1, app.Projects.GetProjectsCount());
-
-                // List<ProjectData> newProjectsList = app.Projects.GetGroupList();
-                // oldProjectsList.Remove(project);
-                // newProjectsList.Sort();
-                // oldProjectsList.Sort();
-
-                // Assert.AreEqual(oldProjectsList, newProjectsList);
+            List<ProjectData> newProjectsList = app.Projects.GetProjects();
+            oldProjectsList.RemoveAt(0); 
+            newProjectsList.Sort(); 
+            oldProjectsList.Sort();  
+            Assert.AreEqual(oldProjectsList, newProjectsList);
             }
         }
 
