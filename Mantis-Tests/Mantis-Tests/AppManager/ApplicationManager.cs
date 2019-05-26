@@ -25,6 +25,7 @@ namespace Mantis_Tests
         public ManagementMenuHelper Menu { get; set; }
         public LoginHelper Auth { get; set; }
         public AdminHelper Admin { get; set; }
+        public APIHelper API { get; set; }
 
         private static ThreadLocal<ApplicationManager> app= new ThreadLocal<ApplicationManager>();
 
@@ -41,6 +42,7 @@ namespace Mantis_Tests
             Menu = new ManagementMenuHelper(this, baseURL);
             Auth = new LoginHelper(this);
             Admin = new AdminHelper(this,baseURL);
+            API = new APIHelper(this);
 
         }
 

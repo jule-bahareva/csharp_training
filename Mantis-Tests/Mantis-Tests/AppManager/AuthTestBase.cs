@@ -11,8 +11,8 @@ namespace Mantis_Tests
         [SetUp]
 
         public void SetupLogin()
-        {
-            app.Auth.Login 
+       {
+           app.Auth.Login 
                 (new AccountData { Name = "administrator", Password = "root"} 
                 );
         }

@@ -45,6 +45,7 @@ namespace Mantis_Tests
             return accounts;
         }
 
+        
         public void DeleteAccount(AccountData account)
         {
  
@@ -56,11 +57,11 @@ namespace Mantis_Tests
         }
 
 
-       private IWebDriver OpenAppAndLogin()
+         public IWebDriver OpenAppAndLogin()
        {
 
 
-            IWebDriver driver = new SimpleBrowserDriver();
+            //IWebDriver driver = new SimpleBrowserDriver();
 
             driver.Url = baseURL + "/login_page.php";
             driver.FindElement(By.Name("username")).SendKeys("administrator");
@@ -68,9 +69,7 @@ namespace Mantis_Tests
             driver.FindElement(By.Name("password")).SendKeys("root");
             driver.FindElement(By.CssSelector("[type='submit']")).Click();
             return driver;
+        }  
 
-
-        }
-       
     }
 }

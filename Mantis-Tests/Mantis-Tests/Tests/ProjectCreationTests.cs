@@ -30,7 +30,7 @@ namespace Mantis_Tests
             {
                 Name = GenerateRandomString(20)
             };
- 
+
             app.Projects.Create(project);
 
             Assert.AreEqual(oldProjectsList.Count + 1, app.Projects.GetProjects().Count);
@@ -44,6 +44,8 @@ namespace Mantis_Tests
 
         }
     }
+
 }
+
 
 
