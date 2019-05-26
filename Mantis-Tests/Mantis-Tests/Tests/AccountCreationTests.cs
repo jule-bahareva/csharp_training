@@ -27,6 +27,8 @@ namespace Mantis_Tests
         public void AccountRegistrationTest()
         {
 
+           
+
             AccountData account = new AccountData()
             {
                 Name = "testuser4",
@@ -35,6 +37,10 @@ namespace Mantis_Tests
            
             };
 
+            List<AccountData> accounts = app.Admin.GetAllAccounts();
+            AccountData existingAccount = accounts.Find(x => x.Name == account.Name);
+
+            app.Admin.DeleteAccount(existingAccount);
 
             app.James.Remove(account);
             app.James.Add(account);

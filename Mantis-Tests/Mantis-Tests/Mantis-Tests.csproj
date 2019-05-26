@@ -58,13 +58,13 @@
       <HintPath>..\packages\OpaqueMail.2.4.3\lib\OpaqueMail.dll</HintPath>
     </Reference>
     <Reference Include="RazorHosting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleBrowser.0.5.61.0\lib\net40\RazorHosting.dll</HintPath>
+      <HintPath>..\packages\SimpleBrowser.0.5.43.0\lib\net40\RazorHosting.dll</HintPath>
     </Reference>
-    <Reference Include="SimpleBrowser, Version=0.5.61.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleBrowser.0.5.61.0\lib\net40\SimpleBrowser.dll</HintPath>
+    <Reference Include="SimpleBrowser, Version=0.5.43.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleBrowser.0.5.43.0\lib\net40\SimpleBrowser.dll</HintPath>
     </Reference>
-    <Reference Include="SimpleBrowser.WebDriver, Version=0.5.43.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleBrowser.WebDriver.0.5.43\lib\net40\SimpleBrowser.WebDriver.dll</HintPath>
+    <Reference Include="SimpleBrowser.WebDriver, Version=0.5.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleBrowser.WebDriver.0.5.33\lib\net40\SimpleBrowser.WebDriver.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
