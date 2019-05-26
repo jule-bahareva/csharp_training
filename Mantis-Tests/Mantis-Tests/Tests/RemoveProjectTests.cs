@@ -12,8 +12,15 @@ namespace Mantis_Tests
         [Test]
         public void ProjectRemovalTest()
         {
+            AccountData account = new AccountData()
+            {
+                Name = "administrator",
+                Password = "root"
+            };
 
-            if (!app.Projects.IsProjectExist())
+            List<ProjectData> oldProjectsList = app.API.GetAllProjects(account);
+
+            if (oldProjectsList.Count < 1)
 
             {
                 ProjectData anyProject = new ProjectData()
@@ -21,18 +28,18 @@ namespace Mantis_Tests
                     Name = GenerateRandomString(20)
                 };
 
-                app.Projects.Create(anyProject);
+                app.API.AddProject(account, anyProject);
             }
 
+            oldProjectsList = app.API.GetAllProjects(account);
 
+            ProjectData projectToRemove = oldProjectsList[0];
 
-            List<ProjectData> oldProjectsList = app.Projects.GetProjects();
+            app.API.RemoveProject(account, projectToRemove);
 
-            app.Projects.Remove();
+            Assert.AreEqual(oldProjectsList.Count - 1, app.API.GetAllProjects(account).Count);
 
-            Assert.AreEqual(oldProjectsList.Count - 1, app.Projects.GetProjects().Count);
-
-            List<ProjectData> newProjectsList = app.Projects.GetProjects();
+            List<ProjectData> newProjectsList = app.API.GetAllProjects(account);
             oldProjectsList.RemoveAt(0);
             newProjectsList.Sort();
             oldProjectsList.Sort();
