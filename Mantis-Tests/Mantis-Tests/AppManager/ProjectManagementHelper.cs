@@ -14,6 +14,7 @@ namespace Mantis_Tests
     {
         public ProjectManagementHelper(ApplicationManager manager) : base(manager) { }
 
+  
         public ProjectManagementHelper Create(ProjectData project)
         {
             manager.Menu.OpenProjectManagementPage();
@@ -22,6 +23,12 @@ namespace Mantis_Tests
             SubmitProjectCreation();
             manager.Menu.OpenProjectManagementPage();
             return this;
+        }
+
+        public bool IsProjectExist()
+        {
+            manager.Menu.OpenProjectManagementPage();
+            return IsElementPresent(By.XPath("//div[@id='main-container']/div[2]/div[2]/div/div/div[2]/div[2]/div/div[2]/table/tbody/tr/td/a"));
         }
 
         private void SubmitProjectCreation()
